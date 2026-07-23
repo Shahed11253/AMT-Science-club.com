@@ -1,0 +1,390 @@
+<!-- <!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMT Science Club Hero Section</title>
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0d122b; /* image_0.png-এর সাথে মিল রেখে */
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow & Particles Container */
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(63, 126, 247, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(63, 126, 247, 0.1) 0%, transparent 40%);
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(63, 126, 247, 0.6);
+            filter: blur(4px);
+            box-shadow: 0 0 12px rgba(63, 126, 247, 0.8);
+            animation: moveParticle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes moveParticle {
+            0% { transform: translateY(0); opacity: 0.2; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-120px); opacity: 0; }
+        }
+
+        /* Main Wrapper - Limited to 1200px Max-Width */
+        .wrapper {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 1. Header / Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .navbar-menu li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .navbar-menu li a:hover {
+            color: #3f7ef7;
+        }
+
+        .btn-join {
+            background-color: #3f7ef7;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(63, 126, 247, 0.3);
+        }
+
+        .btn-join:hover {
+            background-color: #2b68e0;
+            box-shadow: 0 4px 20px rgba(63, 126, 247, 0.6);
+        }
+
+        /* 2. Hero Content Area */
+        .hero-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 40px 0 60px 0;
+        }
+
+        /* Text Section (Left) */
+        .text-section {
+            flex: 1;
+            max-width: 580px;
+        }
+
+        .text-section h1 {
+            font-size: 42px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .blue-glow {
+            color: #3f7ef7;
+            text-shadow: 0 0 15px rgba(63, 126, 247, 0.6);
+        }
+
+        .text-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            color: #b0b8d9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #3f7ef7;
+            color: #fff;
+            border: 2px solid #3f7ef7;
+            box-shadow: 0 4px 15px rgba(63, 126, 247, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 25px rgba(63, 126, 247, 0.7);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #3f7ef7;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(63, 126, 247, 0.15);
+        }
+
+        /* Visuals Section (Right) */
+        .visuals-section {
+            flex: 1;
+            position: relative;
+            height: 420px;
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Animations */
+        .dna-svg {
+            position: absolute;
+            width: 75%;
+            height: auto;
+            opacity: 0.6;
+            animation: floatDNA 6s ease-in-out infinite;
+        }
+
+        @keyframes floatDNA {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+
+        .atom-svg {
+            position: absolute;
+            width: 45%;
+            height: auto;
+            animation: rotateAtom 12s linear infinite;
+        }
+
+        @keyframes rotateAtom {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .microscope-outline {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            width: 32%;
+            height: auto;
+            opacity: 0.35;
+        }
+
+        /* 3. Responsive Breakpoints */
+        
+        /* Tablet & Small Desktop Screen (Max-Width: 992px) */
+        @media (max-width: 992px) {
+            .navbar-menu {
+                gap: 18px;
+            }
+
+            .text-section h1 {
+                font-size: 34px;
+            }
+
+            .visuals-section {
+                height: 350px;
+            }
+        }
+
+        /* Mobile & Tablet Screen (Max-Width: 768px) */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .navbar-menu {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0 40px 0;
+            }
+
+            .text-section {
+                max-width: 100%;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .visuals-section {
+                width: 100%;
+                height: 320px;
+            }
+        }
+
+        /* Extra Small Mobile (Max-Width: 480px) */
+        @media (max-width: 480px) {
+            .text-section h1 {
+                font-size: 26px;
+            }
+
+            .text-section p {
+                font-size: 14px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-join {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Glowing Background Effect -->
+    <!-- <div class="bg-overlay">
+        <div class="particle" style="width: 8px; height: 8px; top: 75%; left: 10%; animation-duration: 6s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; top: 45%; left: 25%; animation-duration: 5s; animation-delay: 1s;"></div>
+        <div class="particle" style="width: 10px; height: 10px; top: 85%; left: 50%; animation-duration: 7s; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 5px; height: 5px; top: 35%; left: 75%; animation-duration: 4s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; top: 90%; left: 88%; animation-duration: 8s; animation-delay: 1.5s;"></div>
+    </div> -->
+
+    <!-- Main Container (Centered, Max-Width 1200px) -->
+    <!-- <div class="wrapper"> -->
+        
+        <!-- 1. Navbar -->
+        <!-- <header class="navbar">
+            <div class="navbar-logo">
+                <img src="path/to/your/logo.png" alt="AMT Science Club Logo">
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Events</a></li>
+            </ul>
+            <a href="#" class="btn-join">Join Us</a>
+        </header> -->
+
+        <!-- 2. Hero Main Content -->
+        <!-- <main class="hero-content"> -->
+            
+            <!-- Left Text Content -->
+            <!-- <section class="text-section">
+                <h1>বিগব্যান থেকে কোয়ান্টাম ডট,<br>আবিষ্কার করো বিজ্ঞানের<br><span class="blue-glow">অসীম জগত</span>।</h1>
+                <p>Welcome to AMT Science Club, where curiosity meets discovery. Explore the mysteries of the universe and deep science with us.</p>
+                <div class="hero-btns">
+                    <a href="#" class="hero-btn btn-primary">আমাদের সম্পর্কে জানো</a>
+                    <a href="#" class="hero-btn btn-secondary">ইভেন্ট দেখুন</a>
+                </div>
+            </section> -->
+
+            <!-- Right Visual Elements -->
+            <!-- <section class="visuals-section"> -->
+                <!-- Floating DNA -->
+                <!-- <svg class="dna-svg" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 20C40 60 40 100 20 140" stroke="#3f7ef7" stroke-width="4"/>
+                    <path d="M80 20C60 60 60 100 80 140" stroke="#b0b8d9" stroke-width="4"/>
+                    <path d="M20 30L80 30" stroke="#3f7ef7" stroke-width="2"/>
+                    <path d="M25 50L75 50" stroke="#b0b8d9" stroke-width="2"/>
+                    <path d="M28 70L72 70" stroke="#3f7ef7" stroke-width="2"/>
+                    <path d="M25 90L75 90" stroke="#b0b8d9" stroke-width="2"/>
+                    <path d="M20 110L80 110" stroke="#3f7ef7" stroke-width="2"/>
+                    <path d="M25 130L75 130" stroke="#b0b8d9" stroke-width="2"/>
+                </svg>
+                 -->
+                <!-- Rotating Atom -->
+                <!-- <svg class="atom-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="10" fill="#3f7ef7"/>
+                    <ellipse cx="50" cy="50" rx="40" ry="15" stroke="#fff" stroke-width="1.5" transform="rotate(30, 50, 50)"/>
+                    <ellipse cx="50" cy="50" rx="40" ry="15" stroke="#fff" stroke-width="1.5" transform="rotate(150, 50, 50)"/>
+                    <ellipse cx="50" cy="50" rx="40" ry="15" stroke="#fff" stroke-width="1.5"/>
+                </svg> -->
+
+                <!-- Microscope Outline -->
+                <!-- <svg class="microscope-outline" viewBox="0 0 100 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 130V20C20 10 30 5 50 5C70 5 80 10 80 20V130M10 140H90M50 70H70M50 90H70" stroke="#fff" stroke-width="3"/>
+                </svg>
+            </section>
+
+        </main>
+    </div>
+
+</body> -->
+<!-- </html> --> -->

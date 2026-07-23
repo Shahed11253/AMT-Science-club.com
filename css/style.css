@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  background-color: #0d122b;
+}
+
+/* Ambient Glow & Particles Container */
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(63, 126, 247, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(63, 126, 247, 0.1) 0%,
+      transparent 40%
+    );
+}
+
+/* Floating Particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(63, 126, 247, 0.6);
+  filter: blur(4px);
+  box-shadow: 0 0 12px rgba(63, 126, 247, 0.8);
+  animation: moveParticle linear infinite;
+  opacity: 0;
+}
+
+@keyframes moveParticle {
+  0% {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120px);
+    opacity: 0;
+  }
+}
+
+/* Main Wrapper - Limited to 1200px Max-Width */
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* navbar css */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 100%;
+}
+
+nav img {
+  height: 68px;
+  width: auto;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 17px;
+  transition: color 0.3s;
+}
+.menu li a:hover{
+    color: #3f7ef7;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+.nav-btn{
+  background-color: #3f7ef7;
+  color: #fff;
+  padding: 10px 38px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(63, 126, 247, 0.3);
+  cursor: pointer;
+ 
+}
+.nav-btn:hover {
+  background-color: #2b68e0;
+  box-shadow: 0 4px 20px rgba(63, 126, 247, 0.6);
+}
+
+
+/* 2. Hero Content Area */
+.hero-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 0 60px 0;
+}
+
+/* Text Section (Left) */
+.text-section {
+  flex: 1;
+  max-width: 580px;
+}
+
+.text-section h1 {
+  color: #fff;
+  font-size: 42px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.blue-glow {
+  color: #3f7ef7;
+  text-shadow: 0 0 15px rgba(63, 126, 247, 0.6);
+}
+
+.text-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  color: #b0b8d9;
+}
+
+
+.hero-btns {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #3f7ef7;
+  color: #fff;
+  border: 2px solid #3f7ef7;
+  box-shadow: 0 4px 15px rgba(63, 126, 247, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 25px rgba(63, 126, 247, 0.7);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #3f7ef7;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(63, 126, 247, 0.15);
+}
+
+/* Visuals Section (Right) */
+.visuals-section {
+  flex: 1;
+  position: relative;
+  height: 420px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Animations */
+.dna-svg {
+  position: absolute;
+  width: 75%;
+  height: auto;
+  opacity: 0.6;
+  animation: floatDNA 6s ease-in-out infinite;
+}
+
+@keyframes floatDNA {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+.atom-svg {
+  position: absolute;
+  width: 45%;
+  height: auto;
+  animation: rotateAtom 12s linear infinite;
+}
+
+@keyframes rotateAtom {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.microscope-outline {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  width: 32%;
+  height: auto;
+  opacity: 0.35;
+}
+
